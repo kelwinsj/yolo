@@ -4,6 +4,8 @@ const cors = require('cors');
 const multer = require('multer');
 const upload = multer();
 
+require('dotenv').config()
+
 const productRoute = require('./routes/api/productRoute');
 
 // Connecting to the Database
@@ -14,6 +16,8 @@ let dbName = 'yolomy';
 const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
 mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
 let db = mongoose.connection;
+
+console.log (MONGODB_URI)
 
 // Check Connection
 db.once('open', ()=>{
