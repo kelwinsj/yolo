@@ -17,8 +17,6 @@ const MONGODB_URI = process.env.MONGODB_URI || mongodb_url + dbName
 mongoose.connect(MONGODB_URI,{useNewUrlParser: true, useUnifiedTopology: true  } )
 let db = mongoose.connection;
 
-console.log (MONGODB_URI)
-
 // Check Connection
 db.once('open', ()=>{
     console.log('Database connected successfully')
