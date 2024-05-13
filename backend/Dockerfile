@@ -1,20 +1,6 @@
-# Use a lightweight Node.js image
-FROM node:alpine
-
-# Set the working directory in the container
-WORKDIR /usr/src/app
-
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
-
-# Install Node.js dependencies
-RUN npm install --production
-
-# Copy the application code to the container
+FROM node:18-alpine
+WORKDIR /app
 COPY . .
-
-# Expose port 3000
+RUN yarn install --production
+CMD ["node", "server.js"]
 EXPOSE 3000
-
-# Command to run the application
-CMD ["node", "app.js"]
