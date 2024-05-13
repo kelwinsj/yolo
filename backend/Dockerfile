@@ -1,6 +1,11 @@
 FROM node:18-alpine
-WORKDIR /app
+
+WORKDIR /
+
 COPY . .
-RUN yarn install --production
-CMD ["node", "server.js"]
+
+RUN npm install --production
+
 EXPOSE 3000
+
+CMD ["node", "server", "server.js"]
