@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  client:
+    build:
+      context: ./client 
+      dockerfile: Dockerfile
+    container_name: client
+    ports:
+      - "3000:3000"
+    networks:
+      - network_bridge
+    image: kelwinsj/client-new:latest
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "5000:5000"
+    networks:
+      - network_bridge
+    image: kelwinsj/node-back:latest
+
+  yolo.db:
+    image: mongo:latest
+    container_name: yolo_db
+    environment:
+      MONGODB_URI = mongodb+srv://stephennganga1:fQw8xXlhQR6ne6f1@devops-one.p0krmvx.mongodb.net/
+      # MONGO_INITDB_ROOT_USERNAME: 
+      # MONGO_INITDB_ROOT_PASSWORD: 
+      # MONGO_INITDB_DATABASE:  
+    ports:
+      - "27017:27017"
+
+    networks:
+      - network_bridge
+
+networks:
+  yolo_network:
+    driver: bridge

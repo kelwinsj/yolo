@@ -2,7 +2,7 @@
 FROM node:alpine
 
 # Set the working directory in the container
-WORKDIR /usr/src/app
+WORKDIR /usr/public/
 
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
@@ -14,7 +14,7 @@ RUN npm install --production
 COPY . .
 
 # Expose any necessary ports
-EXPOSE 5000
+EXPOSE 3000
 
 # Command to run the application
 CMD ["npm", "start"]
