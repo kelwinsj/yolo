@@ -27,7 +27,7 @@ services:
     image: mongo:latest
     container_name: yolo_db
     environment:
-      MONGODB_URI = mongodb+srv://stephennganga1:fQw8xXlhQR6ne6f1@devops-one.p0krmvx.mongodb.net/
+      MONGODB_URI = ${MONGO_DB}
       # MONGO_INITDB_ROOT_USERNAME: 
       # MONGO_INITDB_ROOT_PASSWORD: 
       # MONGO_INITDB_DATABASE:  
