@@ -23,14 +23,11 @@ services:
       - network_bridge
     image: kelwinsj/node-back:latest
 
-  yolo.db:
+  database:
     image: mongo:latest
-    container_name: yolo_db
+    container_name: database
     environment:
-      MONGODB_URI = ${MONGO_DB}
-      # MONGO_INITDB_ROOT_USERNAME: 
-      # MONGO_INITDB_ROOT_PASSWORD: 
-      # MONGO_INITDB_DATABASE:  
+      - MONGODB_URI=${MONGO_DB}
     ports:
       - "27017:27017"
 
@@ -38,5 +35,5 @@ services:
       - network_bridge
 
 networks:
-  yolo_network:
+  network_bridge:
     driver: bridge
