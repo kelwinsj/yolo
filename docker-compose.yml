@@ -1,37 +1,41 @@
 version: "3"
 
-  services:
-    client:
-      image: kelwinsj/client-new:latest
-      container_name: client-yolo
-      stdin_open: true
-      tty: true
-      ports:
-        - "3000:3000"
-      volumes:
-        - ./client:/app
-      networks:
-        - yolo-network
-      depends_on:
-        - backend
+services:
+  client:
+    image: kelwinsj/client-new:0.1.0
+    container_name: client-yolo
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    volumes:
+      - ./client:/app
+    networks:
+      - yolo-network
+    depends_on:
+      - backend
 
-    backend:
-      image: kelwinsj/node-back:latest
-      container_name: client-backend
-      ports:
-        - "5000:5000"
-      volumes:
-        - ./backend:/app
-      environment:
-        - MONGODB_URI = ${MONGODB}
-      networks:
-        - yolo-network
+  backend:
+    image: kelwinsj/node-back:latest
+    container_name: client-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    expose:
+      - "5000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - MONGODB_URI=${MONGODB}
+    networks:
+      - yolo-network
 
+volumes:
+  data:
 
-  volumes:
-    data:
-
-
-  networks:
-    yolo-network:
-      driver: bridge
+networks:
+  yolo-network:
+    driver: bridge
