@@ -1,39 +1,37 @@
-version: "3.8"
+version: "3.7"
 
-services:
-  client:
-    build:
-      context: ./client 
-      dockerfile: Dockerfile
-    container_name: client
-    ports:
-      - "3000:3000"
-    networks:
-      - network_bridge
-    image: kelwinsj/client-new:latest
+  services:
+    client:
+      image: kelwinsj/client-new:latest
+      container_name: client-yolo
+      stdin_open: true
+      tty: true
+      ports:
+        - "3000:3000"
+      volumes:
+        - ./client:/app
+      networks:
+        - yolo-network
+      depends_on:
+        - backend
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    container_name: backend
-    ports:
-      - "5000:5000"
-    networks:
-      - network_bridge
-    image: kelwinsj/node-back:latest
+    backend:
+      image: kelwinsj/node-back:latest
+      container_name: client-backend
+      ports:
+        - "5000:5000"
+      volumes:
+        - ./backend:/app
+      environment:
+        - MONGODB_URI = ${MONGODB}
+      networks:
+        - yolo-network
 
-  database:
-    image: mongo:latest
-    container_name: database
-    environment:
-      - MONGODB_URI=${MONGO_DB}
-    ports:
-      - "27017:27017"
 
-    networks:
-      - network_bridge
+  volumes:
+    data:
 
-networks:
-  network_bridge:
-    driver: bridge
+
+  networks:
+    yolo-network:
+      driver: bridge
