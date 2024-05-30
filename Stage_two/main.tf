@@ -31,11 +31,32 @@ resource "vsphere_virtual_machine" "vm" {
   num_cpus         = 1
   memory           = 1024
   guest_id         = "other3xLinux64Guest"
+  
   network_interface {
     network_id = data.vsphere_network.network.id
   }
+  
   disk {
     label = "disk0"
     size  = 20
+  }
+
+  # Guest OS customization
+  guest_customization {
+    linux_options {
+      host_name = "ubuntu-vm"
+      domain    = "example.com"
+    }
+    
+    # Specify the username and password for the user
+    user_data = <<-EOF
+                #cloud-config
+                users:
+                  - name: ubuntu
+                    sudo: ALL=(ALL) NOPASSWD:ALL
+                    groups: users, admin
+                    home: /home/ubuntu
+                    shell: /bin/bash
+                EOF
   }
 }

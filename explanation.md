@@ -11,3 +11,7 @@ The declaratives used declare the directory to work with and the run commands to
 ###### Screenshot of the backend image
 
 ![Screenshot of the backend image on Docker hub](/screenshots/backend.png "Client image on Socker hub")
+
+## Ansible and Terraform
+
+I am using vspehere instead of vagrant box as my computer is on the new silicon architecture macs.
