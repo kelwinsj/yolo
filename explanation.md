@@ -6,11 +6,11 @@ The declaratives used declare the directory to work with and the run commands to
 
 ###### Screenshot of the client image
 
-![Screenshot of the client image on Docker hub](/screenshots/client.png "Client image on Socker hub")
+![Screenshot of the client image on Docker hub](/screenshots/client.png "Client image on Docker hub")
 
 ###### Screenshot of the backend image
 
-![Screenshot of the backend image on Docker hub](/screenshots/backend.png "Client image on Socker hub")
+![Screenshot of the backend image on Docker hub](/screenshots/backend.png "Client image on Docker hub")
 
 ## Ansible and Terraform
 
@@ -22,8 +22,12 @@ I will be creating a cluster that has three nodes, two with one pod each to hous
 
 Statefulsets: I am not utilizing stateful sets to set up a storage layer as my application connects to a mongoDB Atlas account and hence the data is saved to an external database and queried with the API at the /api/products endpoint
 
-The MONGODB_URI is provided as an ENV variable at the point of installation. As this repo is public, this file is excluded in the .gitignore and .dockerignore files. An alternative here in a work environment would be to include the file in the docker deploy setup, or to have another setup to manage revolving access keys and include the database as one of them.
+The MONGODB_URI is provided as an ENV variable at the point of installation. As this repo is public, this file is excluded in the .gitignore and .dockerignore files. To fix this issue, I have created a Kubernetes Secret file that refrences to the MONGO_URI and allows the pods to run successfully.
 
 There are two service files to expose both the backend and client applications to external traffic.
 
 All Kubernetes related files are in the kube folder to ensure proper file structure. They also do not have any local dependecies as the containers would get images from docker-hub.
+
+###### Screenshot of the pods running on Minikude Dashboard
+
+![Screenshot of the pods running on the Minikube Dashboard](/screenshots/runningpods.png "Pods running screenshot")
