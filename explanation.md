@@ -30,4 +30,4 @@ All Kubernetes related files are in the kube folder to ensure proper file struct
 
 ###### Screenshot of the pods running on Minikude Dashboard
 
-![Screenshot of the pods running on the Minikube Dashboard](/screenshots/runningpods.png "Pods running screenshot")
+![Screenshot of the pods running on the Minikube Dashboard](/screenshots/pods.png "Pods running screenshot")
