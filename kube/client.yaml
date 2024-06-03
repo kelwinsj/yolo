@@ -18,8 +18,8 @@ spec:
         stdin: true
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "900m"
       
         ports:
         - containerPort: 3000
