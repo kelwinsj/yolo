@@ -28,10 +28,10 @@ There are two service files to expose both the backend and client applications t
 
 All Kubernetes related files are in the kube folder to ensure proper file structure. They also do not have any local dependecies as the containers would get images from docker-hub.
 
-###### Screenshot of the pods running on Minikude Dashboard
+###### Screenshot of the pods running on Minikube Dashboard
 
 ![Screenshot of the pods running on the Minikube Dashboard](/screenshots/pods.png "Pods running screenshot")
 
-###### Screenshot of the services running on Minikude Dashboard
+###### Screenshot of the services running on Minikube Dashboard
 
 ![Screenshot of the services running on the Minikube Dashboard](/screenshots/services.png "Services running screenshot")
